@@ -1,0 +1,29 @@
+title: "Análisis de canciones de kid voodoo"
+author: "Alanis Romero"
+date: "2025-10-21"
+output: html_document
+---
+
+#Instalamos 
+
+install.packages('spotifyr')
+library(spotifyr)
+
+Sys.setenv(SPOTIFY_CLIENT_ID = '6927007fbc2c4447b7c46c3b9396fb07')
+Sys.setenv(SPOTIFY_CLIENT_SECRET = '0114ac183ba2435386492c17b2ed0163')
+
+access_token <- get_spotify_access_token()
+
+access_token
+
+#buscamos y nombramos nuestra base de datos, ya tenemos el API 
+
+kidpudu <- search_spotify("Kid Voodoo", type = "artist")
+kidpudu$id
+
+
+
+## INTRODUCCIÓN
+
+
+
