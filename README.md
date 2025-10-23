@@ -1,5 +1,5 @@
 
-# *"Si estás viendo esto, significa que ya escuchaste todas las canciones atrás en el disco"* 
+# *"Si estás viendo esto, significa que ya escuchaste todas las canciones atrás en el disco (...)"* 
 
 -- KidVoodoo, en  "La explicación"
 
