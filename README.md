@@ -72,11 +72,11 @@ select(explicit, name, popularity)
 
 A continuación, creamos un gráfico de barras que muestra la popularidad de las canciones, diferenciando si son explícitas o no. Además, usamos una imagen de fondo y una paleta de colores personalizada.
 
-\*Explicaciones específicas\*
+**Explicaciones específicas:**
 
 1.  Se eligió una tipografía relacionada a la estética de los últimos álbum del Kid Voodoo.
 2.  El título es un audio que subió como parte final de su álbum.
-3.  Los colores que se usaron son parte de la paleta de su álbum: blanco, negro y grises. Además, de esta forma resalta los gráficos con el fondo de atrás.
+3.  Los colores que se usaron son parte de la paleta de su álbum: blanco, negro y grises. Además, de esta forma se logra resaltar los gráficos con la imagen del fondo.
 4.  Lo más interesante de esta visualización de datos, es que se puede ver si las populares son explícitas o no.
 
 ``` r
