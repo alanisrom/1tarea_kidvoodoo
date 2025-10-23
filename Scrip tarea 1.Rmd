@@ -1,8 +1,18 @@
-title: "Análisis de canciones de kid voodoo"
-author: "Alanis Romero"
-date: "2025-10-21"
-output: html_document
----
+####Si estás viendo esto, significa que ya escuchaste todas las canciones atrás en el disco####
+
+###Introducción
+
+Para un ramo de Medición y Análisis dimencional de datos políticos, se nos pidió realizar una tarea con la finalidad de practicar habilidades de manipulación de datos y visualización en R. Ante esto, el siguiente scrip busca exponer las canciones más populares del artista **Kid Voodoo** utilizando la API de Spotify.  , creando un gráfico que muestre la **popularidad** de sus canciones y si contienen o no contenido explícito.
+
+El proceso se dividirá en cuatro etapas:  
+1. **Ordenar y obtener los datos** desde Spotify.  
+2. **Transformar** la información para quedarnos con las variables relevantes.  
+3. **Modelar y visualizar** los resultados con `ggplot2`.  
+4. **Comunicar** los hallazgos de forma atractiva.
+
+
+
+_____________________________________________
 
 #Instalamos y cargamos librerías necesarios
 
@@ -35,6 +45,44 @@ df_kidpudu <- top_tracks |>
 select(explicit, name, popularity)
 
 
+#
+
+
+df_kidpudu |> 
+  ggplot(aes(x = fct_reorder(name, popularity), y = popularity, fill = explicit)) +
+  annotation_custom(g, xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
+  geom_col(alpha = 0.5) +
+  scale_fill_manual(values = c("TRUE" = "#f8f9fa", "FALSE" = "#6c757d"),
+                    label = c("Sí", "No"),
+                    name = "¿Es o no explícita?") +
+  scale_y_continuous(limits = c(0,100)) +
+  coord_flip() +
+  labs(
+    title = "Si estás viendo esto, significa que ya
+    escuchaste todas las canciones atrás en el disco",
+    subtitle = "Canciones de Kidvoodoo según popularidad en Spotify",
+    x = "Nombre de canción",
+    y = "Popularidad (0-100)",
+    caption = "Fuente: API de Spotify"
+  )+
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"),
+        plot.subtitle = element_text(hjust = 0.5))+
+  theme(
+    plot.title = element_text(family = "Stencil", size = 14, face = "bold", hjust = 0.5, color = "w hite"),
+    plot.subtitle = element_text(family = "Segoe UI", size = 10, hjust = 0.5, color = "white"),
+    axis.title = element_text(family = "Segoe UI", size = 10, color = "white"),
+    axis.text = element_text(family = "Segoe UI", size = 10, color = "#adb5bd"),
+    legend.title = element_text(family = "Segoe UI", size = 10, color = "white"),
+    legend.text = element_text(family = "Segoe UI", size = 10, color = "white"),
+    legend.position = "bottom",
+    plot.background = element_rect(fill = "#202020", color = NA)
+  ))
+
+img <- readJPEG("imagen de kidd.jpg")
+g <- rasterGrob(img, width = unit(1,"npc"), height = unit(1,"npc"))
+
 #Construir base de datos, usar selec explicito, nombre y reproducción, luego usar ggplot y geom_col(), geom_text()
 
 
+#ANORAR UNTRODUCCION DE LO QUE BUSCAMOS LUEGO #BASO DE DATOS mas su decripcion, es decir decir qué vaiables se usaran luego #orden y trasnofrmaci´n de los datoss, poner el cuadrado gris y códigos, y luego visualizacipn de lso graficos, grabar y exporta la imagen, y luego conclusión
