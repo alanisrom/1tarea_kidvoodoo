@@ -6,10 +6,8 @@ output: html_document
 
 #Instalamos y cargamos librerías necesarios
 
-install.packages("spotifyr")
 library(spotifyr)
-install.packages('dplyr')
-install.packages('ggplot2')
+library(tidyverse)
 
 #Conexión co el API de spotify: Antes de comenzar, necesitamos generar un token de acceso con nuestras credenciales de Spotify Developer.
 
@@ -26,13 +24,17 @@ kidpudu <- search_spotify("Kid Voodoo", type = "artist")
 kidpudu$id
 
 #Reemplazá el ID con el correcto que te devuelva el código anterior
-artist_id <- "4wQUr0S2t3Ub4khxR5EPSc"
+artist_id <- "10VBp06W8NIgMW4JruLCC4"
 #Obtenemos las canciones del artista más populares
-top_tracks <- get_artist_top_tracks(artist_id, market = "US")
+top_tracks <- get_artist_top_tracks(artist_id)
 head(top_tracks)
 
-install.packages("remotes")
-remotes::install_github("charlie86/spotifyr")
-library(spotifyr)
+#haemos base de datos corta
+
+df_kidpudu <- top_tracks |> 
+select(explicit, name, popularity)
+
+
+#Construir base de datos, usar selec explicito, nombre y reproducción, luego usar ggplot y geom_col(), geom_text()
 
 
