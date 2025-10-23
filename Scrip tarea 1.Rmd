@@ -4,10 +4,14 @@ date: "2025-10-21"
 output: html_document
 ---
 
-#Instalamos 
+#Instalamos y cargamos librerías necesarios
 
-install.packages('spotifyr')
+install.packages("spotifyr")
 library(spotifyr)
+install.packages('dplyr')
+install.packages('ggplot2')
+
+#Conexión co el API de spotify: Antes de comenzar, necesitamos generar un token de acceso con nuestras credenciales de Spotify Developer.
 
 Sys.setenv(SPOTIFY_CLIENT_ID = '6927007fbc2c4447b7c46c3b9396fb07')
 Sys.setenv(SPOTIFY_CLIENT_SECRET = '0114ac183ba2435386492c17b2ed0163')
@@ -16,14 +20,19 @@ access_token <- get_spotify_access_token()
 
 access_token
 
-#buscamos y nombramos nuestra base de datos, ya tenemos el API 
+#buscamos al artista
 
 kidpudu <- search_spotify("Kid Voodoo", type = "artist")
 kidpudu$id
 
+#Reemplazá el ID con el correcto que te devuelva el código anterior
+artist_id <- "4wQUr0S2t3Ub4khxR5EPSc"
+#Obtenemos las canciones del artista más populares
+top_tracks <- get_artist_top_tracks(artist_id, market = "US")
+head(top_tracks)
 
-
-## INTRODUCCIÓN
-
+install.packages("remotes")
+remotes::install_github("charlie86/spotifyr")
+library(spotifyr)
 
 
