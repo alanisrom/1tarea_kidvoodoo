@@ -1,33 +1,33 @@
+# *"Si estás viendo esto, significa que ya escuchaste todas las canciones atrás en el disco (...)"*
 
-# *"Si estás viendo esto, significa que ya escuchaste todas las canciones atrás en el disco (...)"* 
-
--- KidVoodoo, en  "La explicación"
+-- KidVoodoo, en "La explicación"
 
 ## Introducción
 
-Para un ramo de Medición y Análisis dimencional de datos políticos, se nos pidió realizar una tarea con la finalidad de practicar habilidades de manipulación de datos y visualización en R. Ante esto, el siguiente scrip busca exponer las canciones más populares del artista **Kid Voodoo** utilizando la API de Spotify.  , creando un gráfico que muestre la **popularidad** de sus canciones y si contienen o no contenido explícito.
+Para un ramo de Medición y Análisis dimencional de datos políticos, se nos pidió realizar una tarea con la finalidad de practicar habilidades de manipulación de datos y visualización en R. Ante esto, el siguiente scrip busca exponer las canciones más populares del artista **Kid Voodoo** utilizando la API de Spotify. , creando un gráfico que muestre la **popularidad** de sus canciones y si contienen o no contenido explícito.
 
-El proceso se dividirá en cuatro etapas:  
-1. **Ordenar y obtener los datos** desde Spotify.  
-2. **Transformar** la información para quedarnos con las variables relevantes.  
-3. **Modelar y visualizar** los resultados con `ggplot2`.  
+El proceso se dividirá en cuatro etapas:\
+1. **Ordenar y obtener los datos** desde Spotify.\
+2. **Transformar** la información para quedarnos con las variables relevantes.\
+3. **Modelar y visualizar** los resultados con `ggplot2`.\
 4. **Comunicar** los hallazgos de forma atractiva.
 
 ## Instalación y carga de librerías
 
-Primero instalamos y cargamos las librerías necesarias 
+Primero instalamos y cargamos las librerías necesarias
 
-```r
+``` r
 library(spotifyr)
 library(tidyverse)
 library(jpeg)
 library(grid)
 ```
+
 ## Conexión con la API de Spotify
 
 Antes de comenzar, necesitamos generar un token de acceso con nuestras credenciales de Spotify Developer.
 
-```r
+``` r
 Sys.setenv(SPOTIFY_CLIENT_ID = '6927007fbc2c4447b7c46c3b9396fb07')
 Sys.setenv(SPOTIFY_CLIENT_SECRET = '0114ac183ba2435386492c17b2ed0163')
 
@@ -37,39 +37,42 @@ access_token
 ```
 
 ## Búscamos al artista y extraemos los datos
+
 Buscamos al artista Kid Voodoo y obtenemos sus canciones más populares.
-```r
+
+``` r
 kidpudu <- search_spotify("Kid Voodoo", type = "artist")
 kidpudu$id
 ```
-```r
+
+``` r
 artist_id <- "10VBp06W8NIgMW4JruLCC4"
 top_tracks <- get_artist_top_tracks(artist_id)
 head(top_tracks)
 ```
 
 ## Transformación de datos
+
 Nos quedamos con las variables que nos interesan:
 
-1. explicit → si la canción es explícita
+1.  explicit → si la canción es explícita
 
-2. name → nombre de la canción
+2.  name → nombre de la canción
 
-3. popularity → nivel de popularidad (0 a 100)
+3.  popularity → nivel de popularidad (0 a 100)
 
-```r
+``` r
 df_kidpudu <- top_tracks |>
 select(explicit, name, popularity)
 ```
+
 *le coloqué pudu: porque es una forma meme de llamar al kidvoodoo, también se le dice kiddtuto, entre otros.*
 
 ## Visualización de datos
 
-A continuación, creamos un gráfico de barras que muestra la popularidad de las canciones,
-diferenciando si son explícitas o no.
-Además, usamos una imagen de fondo y una paleta de colores personalizada.
+A continuación, creamos un gráfico de barras que muestra la popularidad de las canciones, diferenciando si son explícitas o no. Además, usamos una imagen de fondo y una paleta de colores personalizada.
 
-```r
+``` r
 img <- readJPEG("imagen de kidd.jpg")
 g <- rasterGrob(img, width = unit(1,"npc"), height = unit(1,"npc"))
 
@@ -105,7 +108,8 @@ plot.background = element_rect(fill = "#202020", color = NA)
 )
 ```
 
+![](grafico_final.png)
+
 ## Conclusión
 
-En este análisis aprendimos a conectar con la API de Spotify y a visualizar información musical de forma estética.
-Se observa que algunas de las canciones más populares de Kid Voodoo no son explícitas, aunque las más escuchadas tienden a tener un tono más crudo y personal. Esto refleja la dualidad en su música, que permite llegara  públicos variados. 
+En este análisis aprendimos a conectar con la API de Spotify y a visualizar información musical de forma estética. Se observa que algunas de las canciones más populares de Kid Voodoo no son explícitas, aunque las más escuchadas tienden a tener un tono más crudo y personal. Esto refleja la dualidad en su música, que permite llegara públicos variados.
