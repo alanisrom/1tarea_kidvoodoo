@@ -1,7 +1,7 @@
 # 1tarea_kidvoodoo
 Analizar las canciones más escuchadas de Kidd Voodoo usando R para la Tarea 1 del curso de análisis de datos.
 
-## *Si estás viendo esto, significa que ya escuchaste todas las canciones atrás en el disco*  ###- KidVoodoo, en  "explicación"
+## *Si estás viendo esto, significa que ya escuchaste todas las canciones atrás en el disco* - KidVoodoo, en  "explicación"
 
 ###Introducción
 
