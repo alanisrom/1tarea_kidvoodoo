@@ -72,18 +72,10 @@ select(explicit, name, popularity)
 
 A continuación, creamos un gráfico de barras que muestra la popularidad de las canciones, diferenciando si son explícitas o no. Además, usamos una imagen de fondo y una paleta de colores personalizada.
 
-**Explicaciones específicas:**
-
-1.  Se eligió una tipografía relacionada a la estética de los últimos álbum del Kid Voodoo.
-2.  El título es un audio que subió como parte final de su álbum.
-3.  Los colores que se usaron son parte de la paleta de su álbum: blanco, negro y grises. Además, de esta forma se logra resaltar los gráficos con la imagen del fondo.
-4.  Lo más interesante de esta visualización de datos, es que se puede ver si las populares son explícitas o no.
 
 ``` r
 img <- readJPEG("imagen de kidd.jpg")
 g <- rasterGrob(img, width = unit(1,"npc"), height = unit(1,"npc"))
-
-
 
 
 df_kidpudu |>
@@ -114,6 +106,19 @@ legend.position = "bottom",
 plot.background = element_rect(fill = "#202020", color = NA)
 )
 ```
+**Explicaciones específicas:**
+
+1.  Se eligió una tipografía relacionada a la estética de los últimos álbum del Kid Voodoo. para eso, descargamos un paquete de tipografía, luego se identificaron las disponibles y se usaron:
+
+``` r
+install.packages("extrafont")
+library(extrafont)
+font_import()  # Esto puede tardar unos minutos
+fonts() # Lista las fuentes disponibles
+```
+2.  El título es un audio que subió como parte final de su álbum.
+3.  Los colores que se usaron son parte de la paleta de su álbum: blanco, negro y grises. Además, de esta forma se logra resaltar los gráficos con la imagen del fondo.
+4.  Lo más interesante de esta visualización de datos, es que se puede ver si las populares son explícitas o no.
 
 ## ![](images/clipboard-4024435838)
 
