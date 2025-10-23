@@ -108,7 +108,7 @@ plot.background = element_rect(fill = "#202020", color = NA)
 )
 ```
 
-![](grafico_final.png)
+![](images/clipboard-4024435838.png)
 
 ## Conclusión
 
